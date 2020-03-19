@@ -30,6 +30,7 @@
 #include "MemoryModel/PointerAnalysis.h"
 #include "MemoryModel/PAGBuilder.h"
 #include "MemoryModel/PAGBuilderFromFile.h"
+#include "MemoryModel/ICFGBuilderFromFile.h"
 #include "Util/SVFUtil.h"
 #include "Util/PTAStat.h"
 #include "Util/ThreadCallGraph.h"
@@ -137,7 +138,10 @@ void PointerAnalysis::initialize(SVFModule svfModule) {
         // We read PAG from a user-defined txt instead of parsing PAG from LLVM IR
         if (SVFModule::pagReadFromTXT()) {
             PAGBuilderFromFile fileBuilder(SVFModule::pagFileName());
-            pag = fileBuilder.build();
+            pag = fileBuilder.buildFromICFG();
+            ICFGBuilderFromFile* icfgFileBuilder = new ICFGBuilderFromFile(SVFModule::pagFileName(),pag);
+            icfg = icfgFileBuilder->build();
+            outs()<<"pag build successed ....\n\n\n";
 
         } else {
             DBOUT(DGENERAL, outs() << pasMsg("Building Symbol table ...\n"));
