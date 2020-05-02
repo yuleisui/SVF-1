@@ -1,0 +1,27 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: download llvm
+      run: wget http://releases.llvm.org/9.0.0/clang+llvm-9.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+    - name: unzip llvm
+      run: tar -xvf clang+llvm-9.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+    - name: export llvm path
+      run: export LLVM_DIR=./clang+llvm-9.0.0-x86_64-linux-gnu-ubuntu-18.04
+    - name: download SVF
+      run: git clone https://github.com/SVF-tools/SVF.git SVF
+    - name: build SVF
+      run: cd SVF
+    - name: build SVF
+      run: ./build.sh
