@@ -94,10 +94,14 @@ public:
 
 private:
     const Instruction *inst;
+    const std::string* str_value;
     StmtOrPHIVec vnodes;
 public:
     IntraBlockNode(NodeID id, const Instruction *i) : ICFGNode(id, IntraBlock), inst(i) {
         fun = LLVMModuleSet::getLLVMModuleSet()->getSVFFunction(inst->getFunction());
+    }
+
+    IntraBlockNode(NodeID id, const std::string *i) : ICFGNode(id, IntraBlock), str_value(i) {
     }
 
     inline const Instruction *getInst() const {

@@ -36,7 +36,7 @@
 #include "SVF-FE/LLVMUtil.h"
 
 #include "MemoryModel/PointerAnalysisImpl.h"
-#include "MemoryModel/PAGBuilderFromFile.h"
+#include "MemoryModel/Json2Graph.h"
 #include "MemoryModel/PTAStat.h"
 #include "Graphs/ThreadCallGraph.h"
 #include "Graphs/ICFG.h"
@@ -138,6 +138,10 @@ void PointerAnalysis::initialize(SVFModule* svfModule) {
         if (SVFModule::pagReadFromTXT()) {
             PAGBuilderFromFile fileBuilder(SVFModule::pagFileName());
             pag = fileBuilder.build();
+            ICFGBuilderFromFile icfgFileBuilder(SVFModule::pagFileName(),pag);
+            icfg = icfgFileBuilder.build();
+            CallGraphBuilderFromFile callGraphBuilder (SVFModule::pagFileName());
+            ptaCallGraph = callGraphBuilder.build();
 
         } else {
             DBOUT(DGENERAL, outs() << pasMsg("Building Symbol table ...\n"));

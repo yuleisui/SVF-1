@@ -14,6 +14,7 @@ set(SOURCES
     SVF-FE/SymbolTableInfo.cpp
     SVF-FE/PAGBuilder.cpp
     SVF-FE/CHA.cpp
+    SVF-FE/Graph2Json.cpp
     Graphs/PTACallGraph.cpp
     Graphs/ThreadCallGraph.cpp
     Graphs/PAG.cpp
@@ -33,7 +34,7 @@ set(SOURCES
     Util/ThreadAPI.cpp
     MemoryModel/MemModel.cpp
     MemoryModel/LocationSet.cpp
-    MemoryModel/PAGBuilderFromFile.cpp
+    MemoryModel/Json2Graph.cpp
     MemoryModel/PointerAnalysis.cpp
     MemoryModel/PointerAnalysisImpl.cpp    
     MSSA/MemPartition.cpp
