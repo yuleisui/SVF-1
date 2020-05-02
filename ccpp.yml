@@ -1,0 +1,38 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+   mac_build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: download llvm
+      run:  mkdir /home/llvm && cd /home/llvm && wget https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/clang+llvm-9.0.1-x86_64-apple-darwin.tar.xz
+    - name: unzip llvm
+      run:  tar -xvf clang+llvm-9.0.1-x86_64-apple-darwin.tar.xz
+    - name: download SVF
+      run:  git clone https://github.com/SVF-tools/SVF.git SVF
+    - name: build SVF
+      env: 
+            LLVM_DIR: /home/llvm/clang+llvm-9.0.1-x86_64-apple-darwin
+      run: cd SVF && ./build.sh
+    
+   ubuntu_build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: download llvm
+      run:  mkdir /home/llvm && cd /home/llvm && wget http://releases.llvm.org/9.0.0/clang+llvm-9.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+    - name: unzip llvm
+      run:  tar -xvf clang+llvm-9.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+    - name: download SVF
+      run:  git clone https://github.com/SVF-tools/SVF.git SVF
+    - name: build SVF
+      env:
+        LLVM_DIR: /home/llvm/clang+llvm-9.0.0-x86_64-linux-gnu-ubuntu-18.04
+      run: cd SVF && ./build.sh 
