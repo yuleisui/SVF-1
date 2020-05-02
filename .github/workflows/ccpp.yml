@@ -1,0 +1,22 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+   job1:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: download llvm
+      run:  wget https://github.com/llvm/llvm-project/releases/download/llvmorg-9.0.1/clang+llvm-9.0.1-x86_64-apple-darwin.tar.xz
+    - name: unzip llvm
+      run:  tar -xvf clang+llvm-9.0.1-x86_64-apple-darwin.tar.xz
+    - name: download SVF
+      run:  git clone https://github.com/SVF-tools/SVF.git SVF
+    - name: build SVF
+      run: export LLVM_DIR=./clang+llvm-9.0.1-x86_64-apple-darwin && cd SVF && ./build.sh
+    
