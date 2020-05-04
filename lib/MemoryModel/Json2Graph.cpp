@@ -11,7 +11,7 @@ using namespace SVFUtil;
 static u32_t gepNodeNumIndex = 100000;
 SVFPAG* svf_pag;
 
-void PAGBuilderFromFile::addNode(NodeID ID, std::string node_type, const char*  str_val){
+void PAGBuilderFromFile::addNode(NodeID ID, std::string node_type, const std::string str_val){
 	if(node_type=="DummyValNode"){
 		svf_pag->addDummyValNode(ID);
 	}
@@ -79,7 +79,7 @@ PAG* PAGBuilderFromFile::build(){
 
 					//add new node
 					string var = "";
-					const char *val = var.c_str(); 
+					const std::string val = ""; 
 					if(!svf_pag->hasGNode(source_node))
 						addNode(source_node,source_node_type,val);
 					if(!svf_pag->hasGNode(destination_node))
@@ -196,7 +196,7 @@ ICFG* ICFGBuilderFromFile::build(){
 }
 
 void ICFGBuilderFromFile::addNode(NodeID nodeId, std::string nodeType,llvm::json::Array* pagEdges){
-    const std::string *value = new std::string("");
+    const std::string value = "";
     SVFFunction* svf_function = new SVFFunction("");
     if(!icfg->hasICFGNode(nodeId)){
         if(nodeType=="IntraBlock"){

@@ -34,7 +34,7 @@ public:
     PAG* build();
 
     //add pag nodes
-    void addNode(NodeID ID, std::string node_type, const char*  str_val);
+    void addNode(NodeID ID, std::string node_type, const std::string  str_val);
 
     // Add edges
     void addEdge(NodeID nodeSrc, NodeID nodeDst, Size_t offset,
