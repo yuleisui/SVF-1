@@ -652,7 +652,7 @@ PAGNode::PAGNode(const Value* val, NodeID i, PNODEK k) :
     }
 }
 
-PAGNode::PAGNode(NodeID i,PNODEK k,const std::string str_val):
+PAGNode::PAGNode(NodeID i,PNODEK k,const std::string& str_val):
     GenericPAGNodeTy(i,k), str_value(str_val){
      assert(ValNode <= k && k<= DummyObjNode && "new PAG node kind?");
     switch (k) {

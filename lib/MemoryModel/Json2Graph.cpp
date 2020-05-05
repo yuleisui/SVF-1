@@ -11,7 +11,7 @@ using namespace SVFUtil;
 static u32_t gepNodeNumIndex = 100000;
 SVFPAG* svf_pag;
 
-void PAGBuilderFromFile::addNode(NodeID ID, std::string node_type, const std::string str_val){
+void PAGBuilderFromFile::addNode(NodeID ID, std::string node_type, const std::string& str_val){
 	if(node_type=="DummyValNode"){
 		svf_pag->addDummyValNode(ID);
 	}

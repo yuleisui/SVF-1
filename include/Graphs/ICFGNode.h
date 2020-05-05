@@ -101,7 +101,7 @@ public:
         fun = LLVMModuleSet::getLLVMModuleSet()->getSVFFunction(inst->getFunction());
     }
 
-    IntraBlockNode(NodeID id, const std::string i) : ICFGNode(id, IntraBlock), str_value(i) {
+    IntraBlockNode(NodeID id, const std::string& i) : ICFGNode(id, IntraBlock), str_value(i) {
     }
 
     inline const Instruction *getInst() const {
