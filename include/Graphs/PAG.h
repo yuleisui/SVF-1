@@ -97,14 +97,14 @@ private:
     ICFG* icfg; // ICFG
     CallSiteSet callSiteSet; /// all the callsites of a program
 
-    /// Constructor
-    PAG(bool buildFromFile);
-
     /// Clean up memory
     void destroy();
 
 public:
     u32_t totalPTAPAGEdge;
+    
+    /// Constructor
+    PAG(bool buildFromFile);
 
     /// Return ICFG
     inline ICFG* getICFG() {

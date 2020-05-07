@@ -652,6 +652,41 @@ PAGNode::PAGNode(const Value* val, NodeID i, PNODEK k) :
     }
 }
 
+PAGNode::PAGNode(NodeID i,PNODEK k,const std::string& str_val):
+    GenericPAGNodeTy(i,k), str_value(str_val){
+     assert(ValNode <= k && k<= DummyObjNode && "new PAG node kind?");
+    switch (k) {
+    case ValNode:
+    case GepValNode: {
+        assert(str_val != "" && "value is NULL for ValPN or GepValNode");
+        isATPointer = false;
+        break;
+    }
+
+    case RetNode: {
+        assert(str_val != "" && "value is NULL for RetNode");
+        isATPointer = false;
+        break;
+    }
+
+    case VarargNode:
+    case DummyValNode: {
+        isTLPointer = true;
+        isATPointer = false;
+        break;
+    }
+
+    case ObjNode:
+    case GepObjNode:
+    case FIObjNode:
+    case DummyObjNode: {
+        isTLPointer = false;
+        isATPointer = true;
+        break;
+    }
+    }
+}
+
 /*!
  * Dump this PAG
  */
