@@ -8,5 +8,5 @@ for i in `find . -name 'Release*'`
 do
 echo delete $i
 rm -rf $i
-rm -rf 'PTABen'
+rm -rf 'SVF-Tests'
 done
