@@ -26,6 +26,10 @@ BuildTY='Release'
 fi
 echo "LLVM_DIR =" $LLVM_DIR
 
+rm -rf ./'Test-Suite'
+echo 'Download Test-Suite'
+git clone "https://github.com/SVF-tools/Test-Suite.git"
+
 export PATH=$LLVM_DIR/bin:$PATH
 Build=$BuildTY'-build'
 
@@ -55,3 +59,5 @@ fi
 # cmake -DCMAKE_CXX_COMPILER=$LLVM_DIR/bin/clang++ -DLLVM_DIR=$LLVM_DIR
 #########
 
+cd ./$Build
+ctest
