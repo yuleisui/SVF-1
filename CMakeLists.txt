@@ -38,7 +38,7 @@ endif()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include
                     ${CMAKE_CURRENT_BINARY_DIR}/include)
-include_directories(/home/jason/SVF-1/Test-Suite)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Test-Suite)
 
 add_subdirectory(lib)
 add_subdirectory(tools)
