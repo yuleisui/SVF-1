@@ -26,8 +26,9 @@ BuildTY='Release'
 fi
 echo "LLVM_DIR =" $LLVM_DIR
 
-echo "Clone PTABen"
-git clone "https://github.com/JasonZhongZexin/SVF-Tests.git"
+rm -rf ./'Test-Suite'
+echo 'Download Test-Suite'
+git clone "https://github.com/SVF-tools/Test-Suite.git"
 
 export PATH=$LLVM_DIR/bin:$PATH
 Build=$BuildTY'-build'

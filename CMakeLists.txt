@@ -38,7 +38,7 @@ endif()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include
                     ${CMAKE_CURRENT_BINARY_DIR}/include)
-include_directories(/home/jason/SVF-1/SVF-Tests)
+include_directories(/home/jason/SVF-1/Test-Suite)
 
 add_subdirectory(lib)
 add_subdirectory(tools)
@@ -51,5 +51,5 @@ INSTALL(
     PATTERN "**/*.h"
     )
 enable_testing()
-add_subdirectory(SVF-Tests)
+add_subdirectory(Test-Suite)
 include(CTest)
