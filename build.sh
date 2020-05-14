@@ -51,7 +51,6 @@ cmake ../
 fi
 make -j4
 
-cd ./$Build
 ctest
 
 ## set up environment variables of SVF
