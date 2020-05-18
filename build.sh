@@ -33,6 +33,9 @@ else
 rm -rf ./'Test-Suite'
 echo 'Download Test-Suite'
 git clone "https://github.com/JasonZhongZexin/Test-Suite.git"
+cd ./'Test-Suite'
+./generate_tests_bc.sh
+cd ..
 fi
 
 export PATH=$LLVM_DIR/bin:$PATH
