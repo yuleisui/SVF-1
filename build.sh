@@ -32,7 +32,7 @@ echo 'Test-Suite exists！'
 else
 rm -rf ./'Test-Suite'
 echo 'Download Test-Suite'
-git clone "https://github.com/SVF-tools/Test-Suite.git"
+git clone "https://github.com/JasonZhongZexin/Test-Suite.git"
 fi
 
 export PATH=$LLVM_DIR/bin:$PATH
