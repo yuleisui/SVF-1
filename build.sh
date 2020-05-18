@@ -34,7 +34,7 @@ rm -rf ./'Test-Suite'
 echo 'Download Test-Suite'
 git clone "https://github.com/SVF-tools/Test-Suite.git"
 cd ./'Test-Suite'
-./generate_tests_bc.sh
+./generate_bc.sh
 cd ..
 fi
 
