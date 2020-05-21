@@ -36,5 +36,7 @@ env:
     - CC=clang-10 CXX=clang++-10
     - PATH=$TRAVIS_BUILD_DIR/cmake-3.8.1-Linux-x86_64/bin:$PATH
     - LLVM_DIR=/usr/lib/llvm-10
+  matrix:
+    - CONFIG_ARGS=""
 install: curl https://cmake.org/files/v3.8/cmake-3.8.1-Linux-x86_64.tar.gz | tar xz
 script: bash ./build.sh
