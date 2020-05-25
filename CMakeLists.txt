@@ -38,6 +38,7 @@ endif()
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include
                     ${CMAKE_CURRENT_BINARY_DIR}/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Test-Suite)
 
 add_subdirectory(lib)
 add_subdirectory(tools)
@@ -49,3 +50,6 @@ INSTALL(
     FILES_MATCHING
     PATTERN "**/*.h"
     )
+enable_testing()
+add_subdirectory(Test-Suite)
+include(CTest)

@@ -26,6 +26,18 @@ BuildTY='Release'
 fi
 echo "LLVM_DIR =" $LLVM_DIR
 
+##download the test cases
+if [ -d 'Test-Suite' ] ; then
+echo 'Test-Suite exists！'
+else
+rm -rf ./'Test-Suite'
+echo 'Download Test-Suite'
+git clone "https://github.com/SVF-tools/Test-Suite.git"
+cd ./'Test-Suite'
+./generate_bc.sh
+cd ..
+fi
+
 export PATH=$LLVM_DIR/bin:$PATH
 Build=$BuildTY'-build'
 
@@ -42,6 +54,8 @@ cmake ../
 fi
 make -j4
 
+ctest
+
 ## set up environment variables of SVF
 cd ../
 if [[ $1 == 'debug' ]]
@@ -54,4 +68,3 @@ fi
 # Optionally, you can also specify a CXX_COMPILER and your $LLVM_HOME for your build
 # cmake -DCMAKE_CXX_COMPILER=$LLVM_DIR/bin/clang++ -DLLVM_DIR=$LLVM_DIR
 #########
-
