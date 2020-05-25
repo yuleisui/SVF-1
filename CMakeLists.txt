@@ -35,7 +35,7 @@ Please set this to environment variable to point to the LLVM build directory\
 else()
         set(IN_SOURCE_BUILD 1)
 endif()
-
+set(Z3_DIR $ENV{Z3_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include
                     ${CMAKE_CURRENT_BINARY_DIR}/include
                     ${Z3_DIR}/include)
@@ -45,7 +45,7 @@ add_subdirectory(lib)
 add_subdirectory(tools)
 
 INSTALL(
-    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ ${CMAKE_CURRENT_BINARY_DIR}/include/ ${Z3_DIR}/include
+    DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ ${CMAKE_CURRENT_BINARY_DIR}/include/ ${Z3_DIR}/include/
     COMPONENT devel
     DESTINATION include/svf
     FILES_MATCHING
