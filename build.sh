@@ -92,13 +92,6 @@ else
 fi
 make -j4
 
-#########
-# Run ctest
-########
-if [[ $sysOS == "Linux" ]] ; then
-  ctest
-fi
-
 ########
 # Set up environment variables of SVF
 ########
@@ -108,6 +101,12 @@ then
   . ./setup.sh debug
 else
   . ./setup.sh
+fi
+#########
+# Run ctest
+########
+if [[ $sysOS == "Linux" ]] ; then
+  ctest
 fi
 #########
 # Optionally, you can also specify a CXX_COMPILER and your $LLVM_HOME for your build
