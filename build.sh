@@ -105,7 +105,10 @@ fi
 #########
 # Run ctest
 ########
+
 if [[ $sysOS == "Linux" ]] ; then
+  pwd
+  cd ./"Release-build"
   ctest
 fi
 #########
