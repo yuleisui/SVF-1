@@ -98,6 +98,7 @@ cmake ../
 fi
 make -j4
 
-ctest
 cd ../
 . ./setup.sh $LLVM_DIR
+cd ./$Build
+ctest
